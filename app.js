@@ -79,24 +79,38 @@ function nextPage(){
 }
 
 function addProduct(){
-    let selectedCategory = selecValue("category-selected");
-
+    let selectedCategory = selecValue("categor-selected");
+    let item = selecValue("product");
+    
     for(i = 0 ; i < categories.length ; i++){
-        if(selectedCategory === categories[i]){
-            categories[i].items.push(selecValue("product"));
-            selecElement("product").innerHTML = "";
-            break;
+        if(categories[i].category == selectedCategory){
+            categories[i].items.push(item);
         }
+
     }
+    selecElement("product").value = "";
+    clearScreen("second-section", "first-section");
 }
 
 function finish(){
-    clearScreen("second-section", "final-section");
+    clearScreen("first-section", "final-section");
+
     for(i = 0 ; i < categories.length ; i++){
-        let h3Title = document.createElement("h2");
-        h3Title.textContent = categories[i];
-        for(a = 0 ; a < categories[i].items[i].length ; a++)[
-            
-        ]
+
+        let fatherElement = selecElement("final-section");
+
+        let h3Title = document.createElement("h3");
+        let h3Text = document.createTextNode(`${categories[i].category}:`);
+
+        fatherElement.appendChild(h3Title);
+        h3Title.appendChild(h3Text);
+
+        let pItems = document.createElement("p");
+
+        for(a = 0 ; a < categories[i].items.length ; a++){
+            pItems.textContent += `${categories[i].items[a]}, `;
+            fatherElement.appendChild(pItems);
+        }
+    
     }
 }
