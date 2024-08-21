@@ -1,27 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es-ar">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shopping List</title>
     <meta name="author" content="Miguel Angel Ulmi">
 </head>
+
 <body>
     <header>
         <h1>Bienvenido a su Shopping List</h1>
     </header>
 
     <main>
-        <section>
+        <section id="first-section">
             <h2>Quieres agregar algún producto a la lista?</h2>
-            <button>NO</button>
-            <button>SI</button>
+            <button onclick="finish()">NO</button>
+            <button onclick="nextPage()">SI</button>
         </section>
 
-        <section>
+        <section id="second-section" hidden>
             <h2>¿Qué alimento deseas agregar?</h2>
-            <input type="text">
-            <datalist id="">
+            <input type="text" name="product">
+            <datalist id="product">
                 <option value="Aguacate">Aguacate</option>
                 <option value="Almendra">Almendra</option>
                 <option value="Apio">Apio</option>
@@ -105,8 +106,8 @@
                 <option value="Yuca">Yuca</option>
             </datalist>
 
-            <h2>Categoría en a la que pertenece el producto</h2>
-            <select>
+            <h2>Categoría a la que pertenece el producto</h2>
+            <select id="category-selected">
                 <option value="Aceites y Grasas">Aceites y Grasas</option>
                 <option value="Carnes">Carnes</option>
                 <option value="Cereales y Granos">Cereales y Granos</option>
@@ -124,7 +125,12 @@
                 <option value="Pescados y Mariscos">Pescados y Mariscos</option>
             </select>            
             
-            <button>Agregar</button>
+            <button onclick="addProduct();">Agregar</button>
+        </section>
+
+        <section id="final-section" hidden>
+            <h2>Lista de Compras:</h2>
+            <p id="list-items"></p>
         </section>
     </main>
 
